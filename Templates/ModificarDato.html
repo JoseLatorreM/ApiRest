@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Template SuperMercado</title>
+    <!-- Agrega la referencia a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<script type="text/javascript">
+    function calcular() {
+        // Obtener los valores de los campos
+        var cantidad = parseInt(document.getElementById("id_Cantidad").value);
+        var valorUnitario = parseFloat(document.getElementById("id_ValorVenta").value);
+        var IVA = 0.19;  // Tasa de IVA del 19%
+
+        // Calcular el total a pagar sin descuento
+        var totalPagar = cantidad * valorUnitario;
+
+        // Calcular el IVA
+        var montoIVA = totalPagar * IVA;
+
+        // Calcular el total a pagar con el IVA
+        var totalFinal = totalPagar + montoIVA;
+
+        // Mostrar resultados en los campos correspondientes
+        document.getElementById("id_Total").value = totalFinal.toFixed(2);
+        document.getElementById("id_Iva").value = montoIVA.toFixed(2);
+    }
+</script>
+<body>
+    <form method="post" action="{% url 'modificarDato' rut=objeto.Rut %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Detalles de la Compra</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Rut</th>
+                                <td><input type="text" name="Rut" readonly value="{{ objeto.Rut }}" required class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>Producto</th>
+                                <td><input type="text" name="Producto" value="{{ objeto.Producto }}" required class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>Cantidad</th>
+                                <td><input type="text" id="id_Cantidad" name="Cantidad" value="{{ objeto.Cantidad }}" required class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>Iva</th>
+                                <td><input type="text" id="id_Iva" name="Iva" readonly value="{{ objeto.Iva }}" required class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>Valor Venta</th>
+                                <td><input type="text" id="id_ValorVenta" name="Valor_Venta" value="{{ objeto.Valor_Venta }}" required class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <td><input type="text" id="id_Total" name="Total" readonly value="{{ objeto.Total }}" required class="form-control"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="text-center mb-4">Instrucciones</h4>
+                    <p class="text-center">Si deseas cambiar la cantidad de productos o el valor venta, tienes que recalcular; de lo contrario, solo guarda.</p>
+                    <p class="text-danger text-center">El botón "Borrar" eliminará todo el registro y te redirigirá a la lista.</p>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary mr-2" onclick='calcular()'>Modificar Datos</button>
+                        <input type="button" value="Re-Calcular" class="btn btn-info mr-2" onclick='calcular()'>
+                        <a href="{% url 'borrar' id=objeto.id %}">
+                            <button type="button" class="btn btn-danger">Borrar</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Agrega la referencia a Bootstrap JS y Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

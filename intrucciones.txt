@@ -1,0 +1,39 @@
+Previo a la ejecucion 
+Instalaciones: 
+- Python
+- Framework Djanggo
+- XAMPP
+- Algun editor de Texto
+
+Primero abrir XAMPP y Habilitar las Opciones 
+- Apache
+- MySQL
+
+Luego debemos crear una Base de datos llamada 
+"supermercado"
+
+Abrimos el proyecto, desde la linea de comandos (CMD)
+y colocamos la ruta
+Ej CMD: "cd C:/Eva4_ApiRest"
+luego "code . "
+y se abrira el proyecto
+
+Una vez el proyecto este abierto en nuestro editor de codigo en este caso Visual Studio Code
+Abrimos la Terminal del proyecto y realizamos las migraciones 
+
+python.exe manage.py makemigrations
+python.exe manage.py migrate
+
+y por ultimo si todo esta correcto arrangamos el proyecto
+
+python.exe manage.py runserver
+
+
+Adicional debemos crear un usuario para el Admin de Django 
+
+python.exe manage.py createsuperuser
+
+rellenamos el formulario y para acceder a la vista de administrador que tiene django 
+solo entraremos a la url local de nuestra pagina y al final colocamos "/admin"
+Ej: "https://132.12.123/Admin"
+y ahi nos pedira las credenciales que creamos en el super usuario

@@ -1,0 +1,72 @@
+<html>       
+    <head> 
+        <title>Autor Del Programa</title>   
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #6b292957;
+            }
+
+            th{
+                background-color: rgba(124, 59, 119, 0.39);
+            }
+
+            td{
+                background-color: rgba(165, 42, 42, 0.356);
+                border: 5px  rgba(165, 42, 42, 0.356);;
+            }
+
+            .BtnInicio {
+            background-color: #bfdf0d80;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        </style>    
+     </head>
+     <body>
+       <center>
+          <h1> <font color="#D68910">Autor Del Programa</font></h1>
+        
+      <h2> <font color="#EBB716"> Prueba N°2 BackEnd </font></h2> 
+             <table border="1" width="60%">
+               <caption><b><font color="#D68910">Datos del Programador</font></b></caption >   
+                <tr>
+                    <th>Nombre</th>
+                    <th>Carrera</th>
+                    <th>Asignatura</th>
+                    <th>Sección </th> 
+                    <th>Profesor</th>
+                    <th>Fecha</th>
+                </tr>
+
+                <tr>
+                    <td>Jose Latorre</td>  
+                    <td>Analista Programador</td>
+                    <td>Programacion Back-End</td>
+                    <td>134-D</td> 
+                    <td>Cesar Arce</td>
+                    <td>18-10-2023</td>
+                <tr>
+                    <td>Alejandro Saravia</td>  
+                    <td>Analista Programador</td>
+                    <td>Programacion Back-End</td>
+                    <td>134-D</td> 
+                    <td>Cesar Arce</td>
+                    <td>18-10-2023</td>
+                </tr>
+                
+
+                 </tr>   
+            </table>
+            <a href="{% url 'MenuInicio' %}"  style="display: inline-block">
+                <button class="BtnInicio">Inicio</button>
+                </a>
+     </center> 
+  </Body>
+</html>
+
